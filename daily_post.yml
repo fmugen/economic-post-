@@ -1,0 +1,37 @@
+# .github/workflows/daily_post.yml
+# GitHubリポジトリのこのパスに置くと自動実行される
+
+name: 毎朝の経済データ投稿
+
+on:
+  schedule:
+    # 毎朝 8:00 JST（= UTC 23:00 前日）に実行
+    - cron: "0 23 * * *"
+  workflow_dispatch:  # 手動実行ボタンも有効化
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Python をセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 依存パッケージをインストール
+        run: pip install anthropic tweepy
+
+      - name: 投稿スクリプトを実行
+        env:
+          # GitHub リポジトリの Settings > Secrets に登録した値が入る
+          FRED_API_KEY:       ${{ secrets.FRED_API_KEY }}
+          ANTHROPIC_API_KEY:  ${{ secrets.ANTHROPIC_API_KEY }}
+          X_API_KEY:          ${{ secrets.X_API_KEY }}
+          X_API_SECRET:       ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN:     ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET:    ${{ secrets.X_ACCESS_SECRET }}
+        run: python post_economic_data.py
