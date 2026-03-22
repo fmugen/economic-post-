@@ -12,6 +12,8 @@
   X_ACCESS_TOKEN    :   〃
   X_ACCESS_SECRET   :   〃
 """
+from dotenv import load_dotenv
+load_dotenv()  # .envを読み込む
 
 import os
 import json
@@ -81,7 +83,8 @@ def generate_tweet(data: dict) -> str:
     oil   = data.get("oil_wti",    {})
     rate  = data.get("japan_rate", {})
     cpi   = data.get("japan_cpi",  {})
-    today = datetime.now().strftime("%Y年%-m月%-d日")
+    now = datetime.now()
+    today = f"{now.year}年{now.month}月{now.day}日"
 
     # Claudeへの指示
     prompt = f"""

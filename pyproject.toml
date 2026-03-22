@@ -1,7 +1,11 @@
 [project]
 name = "economic-post"
 version = "0.1.0"
-description = "Add your description here"
+description = "毎朝の経済データ自動投稿スクリプト"
 readme = "README.md"
-requires-python = ">=3.14"
-dependencies = []
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.86.0",
+    "tweepy>=4.14.0",
+    "python-dotenv>=1.0.0",
+]
