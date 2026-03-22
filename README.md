@@ -7,6 +7,7 @@
 ### なぜFREDを使うのか？
 
 FRED = Federal Reserve Economic Data。米国のセントルイス連邦準備銀行が運営する、**世界規模の経済データベース**です。
+🔗 **[https://fred.stlouisfed.org/](https://fred.stlouisfed.org/)**
 
 日本のデータを直接取るには、日銀や総務省のAPIを個別に叩く必要があり、仕様もバラバラで面倒です。FREDなら：
 - **APIの仕様が統一** - 金利も原油もCPIも同じコードで取得できる
