@@ -29,9 +29,6 @@ FRED = Federal Reserve Economic Data。米国のセントルイス連邦準備�
 
 ---
 
-
----
-
 ## 🚀 クイックスタート
 
 ### 1️⃣ リポジトリをクローン
